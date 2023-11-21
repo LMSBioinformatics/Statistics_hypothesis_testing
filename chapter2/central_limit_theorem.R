@@ -1,52 +1,113 @@
-# Statistics CBW 2022
+# LMS Introduction to statistics & hypothesis testing
+# Jesús Urtasun Elizari - LMS Bioinformatics
+# November 2023
 
 library("ggplot2")
 
-# Central Limit Theorem
+# Chapter 2. The central limit theorem
 
-# Set random seed
-set.seed(123)
+# i) Small sample size .......................................................
 
-# Simulate rolling a dice 10 times, and count the number of 3's observed
-rbinom(1, 10, 1/6)
+# Sample size and number of repetitions
+n = 5
+reps <- 1000
 
-# Simulate 10 students rolling a dice 10 times, count the number of 3's you observed
-rbinom(10, 10, 1/6) 
+# Initialize the vector of sample means and std sample means
+sample_mean <- rep(0, reps)
+std_sample_mean <- rep(0, reps)
 
-# Set the number of points and experiments
-n <- 1000
-
-# Initialize the vector of standardized sample means
-means <- rep(0, n)
-means_std <- rep(0, n)
-
-# Sample from distribution
-for (i in 1:n) {
-      
-      # Throw 10 times a dice
-      x <- rbinom(n, 10, 0.5)
-      
-      # Compute mean value
-      means[i] <- mean(x)
-      means_std[i] <- sqrt(n) * mean(x)
-      
+# Loop over repetitions
+for (i in 1:reps) {
+      x <- rbinom(n, 1, 0.5)
+      sample_mean[i] <- mean(x)
+      std_sample_mean[i] <- sqrt(n) * (mean(x) - 0.5) / 0.5
 }
 
-# Plot means as histogram
-hist(x,
-     main = "Histogram of las experiment values",
-     xlab = paste("Number of successes"),
-     ylab = paste("Frequency"),
-     col = "steelblue")
-
-hist(means,
-     main = "Histogram of means",
-     xlab = paste("Mean values"),
-     ylab = paste("Frequency"),
-     col = "steelblue")
+# Histogram of mean values
+hist(std_sample_mean,
+     col = "steelblue",
+     freq = FALSE,
+     breaks = 40,
+     xlim = c(-3, 3),
+     ylim = c(0, 0.8),
+     xlab = paste("n =", n),
+     main = "")
 
 # Overlay normal distribution N(0,1)
-curve(dnorm(means_std),
+curve(dnorm(x),
       lwd = 2,
-      add = TRUE,
-      col = "darkred")
+      col = "darkred",
+      add = TRUE)
+
+# ii) Large sample size .......................................................
+
+# Sample size and number of repetitions
+n = 50
+reps <- 1000
+
+# Initialize the vector of sample means and std sample means
+sample_mean <- rep(0, reps)
+std_sample_mean <- rep(0, reps)
+
+# Loop over repetitions
+for (i in 1:reps) {
+      x <- rbinom(n, 1, 0.5)
+      sample_mean[i] <- mean(x)
+      std_sample_mean[i] <- sqrt(n) * (mean(x) - 0.5) / 0.5
+}
+
+# Histogram of mean values
+hist(std_sample_mean,
+     col = "steelblue",
+     freq = FALSE,
+     breaks = 40,
+     xlim = c(-3, 3),
+     ylim = c(0, 0.8),
+     xlab = paste("n =", n),
+     main = "")
+
+# Overlay normal distribution N(0,1)
+curve(dnorm(x),
+      lwd = 2,
+      col = "darkred",
+      add = TRUE)
+
+# iii) Iterate over sample sized ..............................................
+
+# Set sample sizes
+sample.sizes <- c(5, 20, 75, 100)
+
+# Subdivide plot panel
+par(mfrow = c(2, 2))
+
+# Iterate over sample sizes
+for (n in sample.sizes) {
+      
+      # Initialize the vector of sample means and std sample means
+      sample_mean <- rep(0, reps)
+      std_sample_mean <- rep(0, reps)
+      
+      # Loop over repetitions
+      for (i in 1:reps) {
+            x <- rbinom(n, 1, 0.5)
+            sample_mean[i] <- mean(x)
+            std_sample_mean[i] <- sqrt(n) * (mean(x) - 0.5) / 0.5
+      }
+      
+      # Histogram of mean values
+      hist(std_sample_mean,
+           col = "steelblue",
+           freq = FALSE,
+           breaks = 40,
+           xlim = c(-3, 3),
+           ylim = c(0, 0.8),
+           xlab = paste("n =", n),
+           main = "")
+      
+      # Overlay normal distribution N(0,1)
+      curve(dnorm(x),
+            lwd = 2,
+            col = "darkred",
+            add = TRUE)
+
+}
