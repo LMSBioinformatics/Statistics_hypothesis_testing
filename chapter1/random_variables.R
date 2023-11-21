@@ -4,7 +4,7 @@
 
 library("statip")
 
-# Chapter 1. Introduction to random variables & probability distributions
+# Chapter 1. Random variables & probability distributions
 
 # i) Binomial distribution ....................................................
 
