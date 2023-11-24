@@ -12,7 +12,7 @@ library("statip")
 n <- 10
 p <- 1/6
 x <- 0:n
-pmf <- dbinom(x,n,p)
+pmf <- dbinom(x, n, p)
 
 # Plot probability mass function
 plot(x, pmf, main = "Binomial distribution", 
@@ -25,7 +25,7 @@ axis(side = 2)
 # Probability of tossing 5 heads in 10 coins
 dbinom(5, 10, 1/2)
 
-# Probability of rolling three sixes in 6 dice
+# Probability of rolling three sixes in 10 dice
 dbinom(3, 10, 1/6)
 
 # Probability of passing an (a, b, c) test of 10 questions answering randomly
@@ -52,11 +52,11 @@ dpois(3, 5)
 # Probability of observing 5 cancer patients in same hospital
 dpois(5, 5)
 
-# Probability of observing 5 or less cancer patients in same hospital
+# Probability of observing 5 or less cancer patients in same hospital - cumulative distribution
 dpois(0, 5) + dpois(1, 5)  + dpois(2, 5) + dpois(3, 5) + dpois(4, 5)  + dpois(5, 5)
 ppois(5, 5)
 
-# Probability of observing 5 or less cancer patients in same hospital
+# Probability of observing more than 5 - unitarity
 1 - ppois(5, 5)
 
 # i) Gaussian distribution ....................................................
@@ -79,7 +79,7 @@ x <- seq(-10, 10, 0.1)
 pdf <- dnorm(x, mu, sigma)
 plot(x, pdf, main = "Normal distribution", xlab = "x", type = "l", col = "red")
 
-# Probability of measuring between 2 and 3
+# Probability of measuring temperature between 2 and 3 degrees
 pnorm(3, mu, sigma) - pnorm(2, mu, sigma)
 
 # Probability of measuring between 1 and 2
@@ -87,6 +87,9 @@ pnorm(2, mu, sigma) - pnorm(1, mu, sigma)
 
 # Probability of measuring between 0 and 1
 pnorm(1, mu, sigma) - pnorm(0, mu, sigma)
+
+# Probability of measuring between 0 and 1
+pnorm(5, mu, sigma) - pnorm(-5, mu, sigma)
 
 # ii) Confidence intervals ....................................................
 
