@@ -6,6 +6,20 @@ library("ggplot2")
 
 # Chapter 2. The central limit theorem
 
+# Consider a binomial distributed variable
+n <- 10
+p <- 1/6
+x <- 0:n
+pmf <- dbinom(x, n, p)
+
+# Plot probability mass function
+plot(x, pmf, main = "Binomial distribution", 
+     ylim = c(0, 0.4), xlab = "x", ylab = "pmf(x)",
+     type = "h", col = "red", axes = FALSE)
+points(x, pmf, col = "red")
+axis(side = 1, at = 0:10)
+axis(side = 2)
+
 # i) Small sample size .......................................................
 
 # Sample size and number of repetitions
@@ -42,7 +56,7 @@ curve(dnorm(x),
 # ii) Large sample size .......................................................
 
 # Sample size and number of repetitions
-n = 50
+n = 20
 reps <- 1000
 
 # Initialize the vector of sample means and std sample means
