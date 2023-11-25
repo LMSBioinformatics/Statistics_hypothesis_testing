@@ -2,11 +2,17 @@
 # Jesús Urtasun Elizari - LMS Bioinformatics
 # November 2023
 
-library("ggplot2")
-
 # Chapter 2. The central limit theorem
 
-# Consider a binomial distributed variable
+# Import libraries
+library("ggplot2")
+
+# Set working directory
+setwd("/Users/jurtasun/Desktop/Courses/LMS/2023/statistics_hypothesis_testing")
+
+# i) Consider a random variable ...............................................
+
+# Number of sixes rolling dice - binomial distributed
 n <- 10
 p <- 1/6
 x <- 0:n
