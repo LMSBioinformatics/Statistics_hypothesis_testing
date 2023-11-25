@@ -2,9 +2,13 @@
 # Jesús Urtasun Elizari - LMS Bioinformatics
 # November 2023
 
+# Chapter 1. Random variables & probability distributions
+
+# Import libraries
 library("statip")
 
-# Chapter 1. Random variables & probability distributions
+# Set working directory
+setwd("/Users/jurtasun/Desktop/Courses/LMS/2023/statistics_hypothesis_testing")
 
 # i) Binomial distribution ....................................................
 
@@ -25,17 +29,17 @@ axis(side = 2)
 # Probability of tossing 5 heads in 10 coins
 dbinom(5, 10, 1/2)
 
-# Probability of rolling three sixes in 10 dice
+# Probability of rolling 3 sixes in 10 dice
 dbinom(3, 10, 1/6)
 
-# Probability of passing an (a, b, c) test of 10 questions answering randomly
+# Probability of answering correctly 5 out of 10 (a, b, c) questions of an exam
 dbinom(5, 10, 1/3)
 
 # ii) Poisson distribution ....................................................
 
 # Poisson distribution with average 7
 lambda = 7
-x = 0:14
+x = 0:20
 pmf <- dpois(x, lambda)
 
 # Plot probability mass function
@@ -82,13 +86,10 @@ plot(x, pdf, main = "Normal distribution", xlab = "x", type = "l", col = "red")
 # Probability of measuring temperature between 2 and 3 degrees
 pnorm(3, mu, sigma) - pnorm(2, mu, sigma)
 
-# Probability of measuring between 1 and 2
-pnorm(2, mu, sigma) - pnorm(1, mu, sigma)
+# Probability of measuring between 0 and 3
+pnorm(3, mu, sigma) - pnorm(0, mu, sigma)
 
-# Probability of measuring between 0 and 1
-pnorm(1, mu, sigma) - pnorm(0, mu, sigma)
-
-# Probability of measuring between 0 and 1
+# Probability of measuring between -5 and 5
 pnorm(5, mu, sigma) - pnorm(-5, mu, sigma)
 
 # ii) Confidence intervals ....................................................
