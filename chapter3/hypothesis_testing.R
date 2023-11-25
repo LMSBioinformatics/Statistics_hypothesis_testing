@@ -2,11 +2,15 @@
 # Jesús Urtasun Elizari - LMS Bioinformatics
 # November 2023
 
-library("ggplot2")
-
 # Chapter 3. Introduction to hypothesis testing
 
-# i) Example 2: rolling dice ..................................................
+# Import libraries
+library("ggplot2")
+
+# Set working directory
+setwd("/Users/jurtasun/Desktop/Courses/LMS/2023/statistics_hypothesis_testing")
+
+# i) Example 1: rolling dice ..................................................
 
 # You have agreed to roll a die to decide who starts a game
 # You are not sure if your opponent is using a loaded die
@@ -63,12 +67,10 @@ alpha = 0.05
 # Find length of data and number of heads observed
 n <- length(data)
 h <- sum(data)
-
-# Compute expected value
-ex <- n * 0.5
+cat(h, "6s observed in", n, "rolls of a die")
 
 # Use H0 to find the p-value of the observed number of heads
-x1 <- 20  # the lower tail
+x1 <- 20 # the lower tail
 
 # Compute p-value
 p1 <- pbinom(x1, 50, 0.5)
