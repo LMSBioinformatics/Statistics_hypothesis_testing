@@ -29,7 +29,7 @@ axis(side = 2)
 # i) Small sample size .......................................................
 
 # Sample size and number of repetitions
-n = 5
+n = 10
 reps <- 1000
 
 # Initialize the vector of sample means and std sample means
@@ -62,7 +62,7 @@ curve(dnorm(x),
 # ii) Large sample size .......................................................
 
 # Sample size and number of repetitions
-n = 20
+n = 50
 reps <- 1000
 
 # Initialize the vector of sample means and std sample means
