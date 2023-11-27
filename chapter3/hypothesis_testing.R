@@ -94,8 +94,8 @@ data_nonsmoking <- c(3.99, 3.79, 3.60, 3.73, 3.21, 3.60, 4.08, 3.61, 3.83, 3.31,
 data_heavysmoking <- c(3.18, 2.84, 2.90, 3.27, 3.85, 3.52, 3.23, 2.76, 3.60, 3.75, 3.59, 3.63, 2.38, 2.34, 2.44)
 
 # We want to know whether there is a significant difference in mean birth weight between the two categories.
-plot(data_nonsmoking, main = "Data non smoking")
-plot(data_heavysmoking, main = "Data heavy smoking")
+hist(data_nonsmoking, main = "Data non smoking", breaks = 10)
+hist(data_heavysmoking, main = "Data heavy smoking", breaks = 10)
 
 # Write down null and alternative hypotheses:
 # H0: there is no difference in mean birth weight between groups: d == 0
